@@ -365,9 +365,9 @@ impl Clipboard for ClipboardContext {
 		// chromium source code
 		// @link {https://source.chromium.org/chromium/chromium/src/+/main:ui/base/clipboard/clipboard_win.cc;l=771;drc=2a5aaed0ff3a0895c8551495c2656ed49baf742c;bpv=0;bpt=1}
 		let cf_png_format = self.format_map.get(CF_PNG);
-		if cf_png_format.is_some() {
+		if let Some(cf_png) = cf_png_format {
 			let png = image.to_png()?;
-			if let Err(e) = set_without_clear(*cf_png_format.unwrap(), png.get_bytes()) {
+			if let Err(e) = set_without_clear(*cf_png, png.get_bytes()) {
 				eprintln!("set png image error, code = {e}");
 				// continue set bmp image
 			}
