@@ -10,7 +10,7 @@ pub use platform::ClipboardContextX11Options;
 pub use platform::{ClipboardContext, ClipboardWatcherContext, WatcherShutdown};
 
 pub trait Clipboard: Send {
-    /// zh: 获得剪切板当前内容的所有格式
+	/// zh: 获得剪切板当前内容的所有格式
 	/// en: Get all formats of the current content in the clipboard
 	fn available_formats(&self) -> Result<Vec<String>>;
 
